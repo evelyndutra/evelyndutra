@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bora ver se tu tá obeso</title>
+</head>
+<body>
+    <h1>Programa Cálculo do Peso</h1>
+    <p>
+        Digite seu nome
+        <input type="text" id="inputNome" value="Maria da Silva">
+    </p>
+    <p>
+        Selecione seu sexo
+        <p>
+            <input type="radio" value="Masculino" id="inputRbMasculino">Masculino
+            <input type="radio" value="Feminino" id="inputRbFeminino">Feminino
+        </p>
+    </p>
+    <p>
+        Sua altura
+        <input type="text" id="inputAltura" value="1.78">
+    </p>
+    <p>
+        <input type="button" value="Calcular Peso" id="btnCalcularPeso">
+        <input type="button" value="Limpar Campos" id="btnLimpar">
+    </p>
+
+    <p id="outResultadoPeso"></p>
+   
+</body>
+    <script>
+        const inputNome         = document.getElementById("inputNome");
+        const inputAltura       = document.getElementById("inputAltura");
+        const inputRbMasculino  = document.getElementById("inputRbMasculino");
+        const inputRbFeminino   = document.getElementById("inputRbFeminino");
+        const btnCalcularPeso   = document.getElementById("btnCalcularPeso");
+        const btnLimpar         = document.getElementById("btnLimpar");
+        const outResultadoPeso  = document.getElementById("outResultadoPeso");
+
+        function PesoIdeal(){
+            //obtém o conteúdo dos campos de edição da página
+            var nome        = inputNome.value;
+            var altura      = Number(inputAltura.value);
+            var rbMasculino = inputRbMasculino.checked;
+            var rbFeminino  = inputRbFeminino.checked;
+
+            //checa se o campo do nome ou os inputs estão vazios
+            //verifica se o nome foi preenchido e sexo selecionado
+            if (nome == "" || (rbMasculino == false && rbFeminino == false)) {
+                alert("Digite o seu nome e selecione o sexo !");
+                inputNome.focus();
+                return;
+            }
+
+            if (altura == 0 || isNaN(altura)) {
+                alert("Digite suan altura");
+                inputAltura.focus();
+                return;
+            }
+           
+            //se masculino(siginifica se o masculino == true)
+            if(rbMasculino) {
+               
+            var peso = 22 * Math.pow(altura, 2);
+            }else {
+                var peso = 21 * Math.pow(altura, 2);
+            }
+            outResultadoPeso.textContent = "O seu peso ideal é: " + peso.toFixed(2) + " Kg";
+
+            }
+            btnCalcularPeso.addEventListener("click",PesoIdeal)
+
+       
+
+        function LimparCampos() {
+            //Limpa os conteúdos dos elementos
+            inputNome.value         = "";
+            inputAltura.value       = "";
+            inputRbMasculino        = "";
+            inputRbFeminino         = "";
+
+            // posiciona (joga o foco) no elemento inputNome
+            inputNome.focus();
+        }
+
+
+
+        btnCalcularPeso.addEventListener("click", PesoIdeal)
+        btnLimpar.addEventListener("click", LimparCampos)
+
+    </script>
+</html>
