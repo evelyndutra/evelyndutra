@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+    <script>
+        var cod = Number(prompt("Informe o código do seu cargo: "))
+        var aumento;
+        var cargo;
+        var salario = Number(prompt("Informe seu salario atual: "))
+
+
+        switch (cod){
+            case "1":aumento = 0.50 ;
+            cargo = "Escrituário";
+            var sal = salario*aumento;
+            break;
+
+            case "2":aumento = 0.35 ;
+            cargo = "Secretário";
+            var sal = salario*aumento;
+            break;
+
+            case "3":aumento = 0.20 ;
+            cargo = "Caixa";
+            var sal = salario*aumento;
+            break;
+
+            case "4":aumento = 0.10 ;
+            cargo = "Gerente";
+            var sal = salario*aumento;
+            break;
+
+            case "5":aumento = "Não tem aumento" ;
+            cargo = "Diretor";
+
+        }
+        var salarioAt= Number(sal+salario);
+        alert("O aumento do cargo "+ cargo + " é de: " + sal.toFixed(2) + " R$ " + aumento + "\n O salariio atual é de: " + salarioAt)
+    </script>
+</html>
